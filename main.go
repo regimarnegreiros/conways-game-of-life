@@ -38,14 +38,11 @@ func print_grid(g [][]bool) {
 func count_cells_and_update(g [][]bool) [][]bool {
 	pos := [8][2]int {
 		{-1, -1}, {0, -1}, {1, -1},
-		{-1, 0},           {1,  0},
-		{-1, 1},  {0,  1}, {1,  1},
+		{-1,  0},          {1,  0},
+		{-1,  1}, {0,  1}, {1,  1},
 	}
 
-	new_grid := make([][]bool, WIDTH)
-	for i := range new_grid {
-		new_grid[i] = make([]bool, HEIGHT)
-	}
+	new_grid := generate_grid()
 	
 	for i := 0; i < WIDTH; i++ {
 		for j := 0; j < HEIGHT; j++ {
@@ -77,10 +74,7 @@ func count_cells_and_update(g [][]bool) [][]bool {
 }
 
 func generate_random_grid(amount int) [][]bool {
-	new_grid := make([][]bool, WIDTH)
-	for i := range new_grid {
-		new_grid[i] = make([]bool, HEIGHT)
-	}
+	new_grid := generate_grid()
 
 	rand.Seed(time.Now().Unix())
 	for i := 0; i < amount; i++ {
